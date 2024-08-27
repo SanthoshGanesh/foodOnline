@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-
 # Create your models here.
 class UserManager(BaseUserManager):
     def create_user(self, first_name, last_name, username, email, password=None):
@@ -38,9 +37,9 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    RESTAURANT = 1
+    VENDOR = 1
     CUSTOMER = 2
-    ROLE_CHOICE = ((RESTAURANT, "Restaurant"), (CUSTOMER, "Customer"))
+    ROLE_CHOICE = ((VENDOR, "Vendor"), (CUSTOMER, "Customer"))
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
@@ -94,5 +93,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.email
-
-
